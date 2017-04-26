@@ -3,6 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
+import './config/fontsize'
+import {hotMovie} from './store/data'
+
+hotMovie(8, 0).then((hotMovie)=>{
+   console.log(hotMovie)
+})
 
 Vue.config.productionTip = false
 
@@ -10,6 +17,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

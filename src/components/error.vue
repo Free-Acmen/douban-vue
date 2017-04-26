@@ -1,7 +1,5 @@
 <template>
-    <div class='m-home'>
-        home
-    </div>
+
 </template>
 
 <script>
@@ -11,5 +9,5 @@
 </script>
 
 <style scoped>
-
+    
 </style>
