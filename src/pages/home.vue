@@ -1,15 +1,29 @@
 <template>
     <div class='m-home'>
-        home
+        {{homeData}}
     </div>
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default{
-
+        data(){
+            return {
+                title: '首页'
+            }
+        },
+        components:{},
+        computed: mapState({
+            homeData(state){
+                return state.home.homeData
+            }
+        }),
+        methods: {
+            
+        }
     }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 
 </style>
