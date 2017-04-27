@@ -7,8 +7,19 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import type from './store/mutation-type'
+
 export default {
-  name: 'app'
+  data(){
+    return {
+
+    }
+  },
+  component:{},
+  computed:mapState({
+    
+  })  
 }
 </script>
 
