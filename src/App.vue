@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="m-app">
     <transition name='router-fade' mode='out-in'>
       <router-view></router-view>
     </transition>
@@ -7,9 +7,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'app'
-  }
+import {mapState} from 'vuex'
+import type from './store/mutation-type'
+export default {
+  data(){
+    return {
+    }
+  },
+  component:{},
+  computed:mapState({
+    
+  })  
+}
 </script>
 
 <style lang='scss'>
