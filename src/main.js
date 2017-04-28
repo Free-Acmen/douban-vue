@@ -7,10 +7,6 @@ import store from './store'
 import './config/fontsize'
 import {hotMovie} from './store/data'
 
-hotMovie(8, 0).then((hotMovie)=>{
-   console.log(hotMovie)
-})
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

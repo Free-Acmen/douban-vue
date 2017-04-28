@@ -11,6 +11,8 @@ export default {
 
         Promise.all([hotMovie(8, 0), commingSoon(8, 0), top250(8, 0), usBox(8, 0)]).then(function(homeData){
             store.commit(type.HOME_DATA, homeData)
+        }).catch(err=>{
+            console.log(err)
         })
         next()
     }
