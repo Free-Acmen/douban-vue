@@ -16,7 +16,7 @@ const store = new Vuex.Store({
             state.loadingFlag = loadingFlag
         },
         [type.NET_STATUS](state, netStatus){
-            states = netStatus
+            state = netStatus
         }
     },
     modules: {

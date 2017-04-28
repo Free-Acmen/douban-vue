@@ -1,22 +1,35 @@
 <template>
   <div id="m-app">
     <transition name='router-fade' mode='out-in'>
-      <router-view></router-view>
+      <m-error v-if='!netStatus' :netStatus='netStatus'></m-error>
+      <m-loading v-else-if='!netStatus && loadingFlag'></m-loading>
+      <router-view v-else></router-view>
     </transition>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import type from './store/mutation-type'
+import mError from './components/error'
+import mLoading from './components/loading'
+
 export default {
   data(){
     return {
+
     }
   },
-  component:{},
-  computed:mapState({
-    
+  components: {
+    mError, 
+    mLoading
+  },
+  computed: mapState({
+    loadingFlag(state){
+      return state.loadingFlag
+    },
+    netStatus(state){
+      return state.netStatus
+    }
   })  
 }
 </script>
