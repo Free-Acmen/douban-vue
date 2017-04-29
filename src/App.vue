@@ -1,7 +1,7 @@
 <template>
   <div id="m-app">
     <transition name='router-fade' mode='out-in'>
-      <m-error v-if='!netStatus' :netStatus='netStatus'></m-error>
+      <m-error v-if='netStatus' :netStatus='netStatus'></m-error>
       <m-loading v-else-if='!netStatus && loadingFlag'></m-loading>
       <router-view v-else></router-view>
     </transition>

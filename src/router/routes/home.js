@@ -20,10 +20,11 @@ export default {
             top250(8, 0),
             usBox(8, 0)
         ]).then(function(homeData){
+            console.log(homeData)
             store.commit(type.HOME_DATA, homeData)
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')
-        }).catch(err => {
+        }).catch((err) => {
             store.commit(type.NET_STATUS, err)
             store.commit(type.LOADING_FLAG, false)
         })
