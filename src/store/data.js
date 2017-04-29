@@ -1,24 +1,20 @@
-import Vue from 'vue'
-import Vueresource from 'vue-resource'
-
-Vue.use(Vueresource)
 
 const ajax = url => new Promise((resolve, reject) => {
-    Vue.http.get(url).then((response)=>{
-        resolve(response)
-    })
-    // const xhr = new XMLHttpRequest()
-    // xhr.open('GET', url)
-    // xhr.send(null)
-    // xhr.onreadystatechange = () => {
-    //     if (xhr.readyState === 4) {
-    //         if (xhr.status === 200) {
-    //             resolve(JSON.parse(xhr.responseText))
-    //         } else {
-    //             reject(`错误: ${xhr.status}`)
-    //         }
-    //     }
-    // }
+    // Vue.http.get(url).then((response)=>{
+    //     resolve(response)
+    // })
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.send(null)
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                resolve(JSON.parse(xhr.responseText))
+            } else {
+                reject(`错误: ${xhr.status}`)
+            }
+        }
+    }
 })
 
 //影院热映

@@ -25,10 +25,15 @@ export default{
 
 <style lang='scss' scoped>
     .m-head{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 2.5rem;
         line-height:2.5rem;
         padding: 0 .5rem; 
-        border: 1px solid #ccc;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
         .title{
             color: #11B91E;
             font-size: 1.2rem;
@@ -37,7 +42,7 @@ export default{
         .nav{
             font-size: .7rem;
             a{  
-                display:inline-block;
+                display: inline-block;
                 padding-left: .5rem;
                 width: 2rem;
             }
