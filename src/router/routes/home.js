@@ -23,6 +23,7 @@ export default {
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')
         }).catch((err) => {
+            console.log(err)
             store.commit(type.NET_STATUS, err)
             store.commit(type.LOADING_FLAG, false)
         })

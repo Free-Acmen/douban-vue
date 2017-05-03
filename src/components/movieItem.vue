@@ -25,7 +25,7 @@
 <style lang='scss' scoped>
     .movie-item{
         width: 5.2rem;
-        padding-left:.5rem;
+        padding: 0 .25rem;
         .movie-img{
             height: 6.8rem;
             img{

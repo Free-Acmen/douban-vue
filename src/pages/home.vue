@@ -7,25 +7,8 @@
                     <span class='title'>{{item.title}}</span>
                     <router-link class='more right' to='/'>更多</router-link>
                 </h2>
-                <div class='swiper-container'>
-                    <div class="swiper-wrapper">
-                        <m-item class="swiper-slide" v-for='movieDetail in item.subjects.slice(0, 8)' :movieDetail='movieDetail' :key='movieDetail.id'></m-item> 
-                    </div>
-                </div>
-
-                <div class='swiper-container'>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" >
-                            <img :src="item.src" :alt="item.name">
-                        </div>
-                    </div>
-                    <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
-                    <!-- 如果需要导航按钮 -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <!-- 如果需要滚动条 -->
-                    <!-- <div class="swiper-scrollbar"></div> -->
+                <div class='swiper'>
+                    <m-item class="item" v-for='movieDetail in item.subjects.slice(0, 9)' :movieDetail='movieDetail' :key='movieDetail.id'></m-item> 
                 </div>
             </div>
         </div>
@@ -54,20 +37,7 @@
             }
         }),
         methods: {
-            // swiper(){
-            //     const swiper = new Swiper('.swiper-container', {
-            //         // direction: 'vertical',
-            //         loop: true,
-            //         autoplay: 3000,
-            //         // 如果需要分页器
-            //         pagination: '.swiper-pagination',
-            //         // 如果需要前进后退按钮
-            //         nextButton: '.swiper-button-next',
-            //         prevButton: '.swiper-button-prev',
-            //         // 如果需要滚动条
-            //         // scrollbar: '.swiper-scrollbar'
-            //     });
-            // }
+    
         }
     }
 </script>
@@ -86,6 +56,19 @@
                .more{
                    color:#42BD56;
                }
+           }
+           .swiper{
+                padding: .4rem .25rem;
+                overflow-x: auto;
+                white-space: nowrap;
+                .item{
+                    display: inline-block;
+                    &:last-child{
+                        dl{
+                            padding-right:.5rem;
+                        }
+                    }
+                }
            }
         }
     }
