@@ -7,16 +7,16 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        netStaus: '',
+        netStatus: '',
         loadingFlag : true
     },
     actions:{},
     mutations: {
-        [type.LOADING_FLAG](state,loadingFlag){
+        [type.LOADING_FLAG](state, loadingFlag){
             state.loadingFlag = loadingFlag
         },
         [type.NET_STATUS](state, netStatus){
-            state = netStatus
+            state.netStatus = netStatus
         }
     },
     modules: {

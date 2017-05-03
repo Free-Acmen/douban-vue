@@ -1,9 +1,11 @@
 <template>
     <div class='m-error'>
         <m-head></m-head>
-        <img src="../assets/image/404.png" alt='404'>
-        <h1>{{netStatus}}404</h1>
-        <router-link class='link-home' to='/'>返回首页</router-link>
+        <div class='padding-top'>
+            <img src="../assets/image/404.png" alt='404'>
+            <h1>{{netStatus}}404</h1>
+            <router-link class='link-home' to='/'>返回首页</router-link>
+        </div>
     </div>
 </template>
 

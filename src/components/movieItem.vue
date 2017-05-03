@@ -7,19 +7,32 @@
             <dd>
                 <h6 class='movie-title ellipsis'>{{detail.title}}</h6>
             </dd>
+            <dd>
+                <m-star :average='average' :length='0.7'></m-star>
+            </dd>
         </dl>
     </router-link>
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-                detail:(this.movieDetail.subject ? this.movieDetail.subject : this.movieDetail )
-            }
-        },
-        props:['movieDetail']
+import mStar from './star'
+export default{
+    data(){
+        return{
+            detail:(this.movieDetail.subject ? this.movieDetail.subject : this.movieDetail )
+        }
+    },
+    props:['movieDetail'],
+    components:{
+        mStar
+    },
+    computed:{
+        average(){
+            // console.log(this.detail.rating.average)
+            return this.detail.rating.average
+        }
     }
+}
 </script>
 
 <style lang='scss' scoped>

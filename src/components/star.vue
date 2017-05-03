@@ -4,21 +4,27 @@
             暂无评分
         </div>
         <div v-else>
-            <img v-for='n in 5' :src='imgSrc(n)' :style=`width: ${length}rem; height: ${length}rem`>
+            <img v-for='n in 5' :src='imgSrc(n)' :style='`width: ${length}rem; height: ${length}rem`'>
+            <span>{{average}}</span>
         </div>
     </div>
 </template>
 
 <script>
-import starGrey from '../assets/image/starGrey.png'
-import starActive from '../assets/image/starActive.png'
+
+import starGrey from '@/assets/image/starGrey.png'
+import starActive from '@/assets/image/starActive.png'
+
 export default{
     data(){
         return{
-
+            
         }
     },
-    props: ['average', 'length']
+    created(){
+        console.log(this.average)
+    },
+    props: ['average', 'length'],
     methods: {
         imgSrc(n){
             return ( 
@@ -32,6 +38,12 @@ export default{
 
 <style lang='scss' scoped>
     .m-star{
-        display: inline-block;
+        font-size: .7rem;
+        div{
+            text-align: center;
+            img{
+                vertical-align: top;
+            }
+        }
     }
 </style>
