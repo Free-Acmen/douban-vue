@@ -6,7 +6,7 @@
                 <span>{{item.body.title}}</span>
                 <router-link class='right' to='/'>更多</router-link>
             </h2>
-            <m-item v-for='movieDetail in item.body.subjects.slice(0, 8)' :movieDetail='movieDetail' :key='movieDetail.id'></m-item>
+            <m-item v-for='movieDetail in item.body.subjects.slice(0, 9)' :movieDetail='movieDetail' :key='movieDetail.id'></m-item>
         </div>
     </div>
 </template>
