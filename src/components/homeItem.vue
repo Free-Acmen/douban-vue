@@ -1,36 +1,35 @@
 <template>
     <div class='m-home-item'>
         <h5>{{homeItem.title}}</h5>
-        {{id}}
-        {{reviews}}
+        {{reviews.summary}}
     </div>
 </template>
 <script>
-    import {ajax, currentMovie} from '../store/data'
+    import {mapState} from 'vuex' 
+    import store from '../store'
+    import {currentMovie} from '../store/data'
     export default{
         data(){
             return {
-                reviews: '',
                 id: this.homeItem.id
             }
         },
         props:['homeItem'],
-        computed: {
-
-        },
+        computed: mapState({
+            reviews(state){
+                return state.home.reviews
+            }
+        }),
         created(){
             this.getReviews();
-            console.log(this.reviews, 1112);
         },
         methods: {
             getReviews(){
-                // ajax(`/v2/movie/subject/${this.id}/reviews`).then((reviews)=>{
-                //     this.reviews = reviews
-                // }).catch((err) => {
-                //     console.log(err)
-                // })
+                if(Object.keys(store.state.home.reviews).length !== 0){
+                    return
+                }
                 currentMovie(this.id).then( (reviews)=>{
-                    console.log(reviews)
+                    store.commit('reviews', reviews)
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -40,6 +39,6 @@
 </script>
 <style lang='scss' scoped>
     .m-home-item{
-        padding: .5rem;
+        padding: 0 .5rem;
     }
 </style>

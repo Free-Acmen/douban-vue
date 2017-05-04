@@ -1,7 +1,8 @@
 import type from '../mutation-type'
 
 const state = {
-    homeData: {}
+    homeData: {},
+    reviews: {}
 }
 
 const action = {}
@@ -11,6 +12,9 @@ const getters = {}
 const mutations = {
     [type.HOME_DATA](state, homeData){
         state.homeData = homeData
+    },
+    reviews(state, reviews){
+        state.reviews = reviews
     }
 }
 
