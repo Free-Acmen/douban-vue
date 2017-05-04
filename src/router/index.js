@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import home from './routes/home'
+import movie from './routes/movie'
 
 Vue.use(Router)
 
@@ -11,7 +12,8 @@ export default new Router({
       path: '/',
       redirect: '/home',
     },
-    home
+    home,
+    movie
   ],
   mode: 'hash',
   activeClass: 'active'

@@ -1,8 +1,8 @@
 <template>
     <div class="m-head">
-        <router-link class='title' to='/'>豆瓣</router-link>
+        <router-link class='title' to='/home'>豆瓣</router-link>
         <div class='nav right clear'>
-            <router-link class='movie' to='/'>电影</router-link>
+            <router-link class='movie' to='/movie'>电影</router-link>
             <router-link class='book' to='/'>图书</router-link>
             <router-link class='broadcast' to='/'>广播</router-link>
             <router-link class='group' to='/'>小组</router-link>

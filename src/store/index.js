@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import type from './mutation-type'
 import home from './modules/home'
+import movie from './modules/movie'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,8 @@ const store = new Vuex.Store({
         }
     },
     modules: {
-        home
+        home,
+        movie
     }
 })
 

@@ -1,11 +1,11 @@
-import Home from '../../pages/home'
+import Movie from '../../pages/movie'
 import store from '../../store'
 import type from '../../store/mutation-type'
 import {hotMovie, commingSoon, top250, usBox} from '../../store/data'
 
 export default {
-    path:'/home',
-    component:Home,
+    path:'/movie',
+    component:Movie,
     beforeEnter:function(to, before, next){
         if(Object.keys(store.state.home.homeData).length !== 0){
             store.commit(type.LOADING_FLAG, false)
@@ -23,6 +23,7 @@ export default {
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')
         }).catch((err) => {
+            console.log(err)
             store.commit(type.NET_STATUS, err)
             store.commit(type.LOADING_FLAG, false)
         })
