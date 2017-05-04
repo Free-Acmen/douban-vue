@@ -28,7 +28,6 @@ export default {
       return state.loadingFlag
     },
     netStatus(state){
-      console.log(state.netStatus)
       return state.netStatus
     }
   })  

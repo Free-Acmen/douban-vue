@@ -1,7 +1,7 @@
 import Home from '../../pages/home'
 import store from '../../store'
 import type from '../../store/mutation-type'
-import {hotMovie, commingSoon, top250, usBox} from '../../store/data'
+import {hotMovie} from '../../store/data'
 
 export default {
     path:'/home',
@@ -13,12 +13,7 @@ export default {
             return
         }
         store.commit(type.LOADING_FLAG, true)
-        Promise.all([
-            hotMovie(9, 0), 
-            commingSoon(9, 0),
-            top250(9, 0),
-            usBox(9, 0)
-        ]).then(function(homeData){
+        hotMovie(30, 0).then(function(homeData){
             store.commit(type.HOME_DATA, homeData)
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')

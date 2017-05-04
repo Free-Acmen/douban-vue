@@ -1,7 +1,7 @@
 import type from '../mutation-type'
 
 const state = {
-    homeData: {}
+    movieData: {}
 }
 
 const action = {}
@@ -9,8 +9,8 @@ const action = {}
 const getters = {}
 
 const mutations = {
-    [type.HOME_DATA](state, homeData){
-        state.homeData = homeData
+    [type.MOVIE_DATA](state, movieData){
+        state.movieData = movieData
     }
 }
 

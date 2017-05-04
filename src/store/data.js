@@ -1,5 +1,5 @@
 
-const ajax = url => new Promise((resolve, reject) => {
+export const ajax = url => new Promise((resolve, reject) => {
     // Vue.http.get(url).then((response)=>{
     //     resolve(response)
     // })
@@ -16,6 +16,7 @@ const ajax = url => new Promise((resolve, reject) => {
         }
     }
 })
+
 
 //影院热映
 export const hotMovie = (count, start) => {

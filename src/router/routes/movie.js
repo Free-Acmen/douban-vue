@@ -7,7 +7,7 @@ export default {
     path:'/movie',
     component:Movie,
     beforeEnter:function(to, before, next){
-        if(Object.keys(store.state.home.homeData).length !== 0){
+        if(Object.keys(store.state.movie.movieData).length !== 0){
             store.commit(type.LOADING_FLAG, false)
             next()
             return
@@ -18,8 +18,8 @@ export default {
             commingSoon(9, 0),
             top250(9, 0),
             usBox(9, 0)
-        ]).then(function(homeData){
-            store.commit(type.HOME_DATA, homeData)
+        ]).then(function(movieData){
+            store.commit(type.MOVIE_DATA, movieData)
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')
         }).catch((err) => {

@@ -1,8 +1,8 @@
 <template>
-    <div class='m-home'>
+    <div class='m-movie'>
         <m-head></m-head>
         <div class='padding-top'>
-            <div class='home-content clear ' v-for='item in homeData' :key='item.title'>
+            <div class='movie-content clear ' v-for='item in movieData' :key='item.title'>
                 <h2>
                     <span class='title'>{{item.title}}</span>
                     <router-link class='more right' to='/'>更多</router-link>
@@ -26,13 +26,10 @@
                 title: '首页'
             }
         },
-        created(){
-            console.log(this.homeData)
-        },
         components:{mHead, mItem},
         computed: mapState({
-            homeData(state){
-                return state.home.homeData
+            movieData(state){
+                return state.movie.movieData
             }
         }),
         methods: {
@@ -42,8 +39,8 @@
 </script>
 
 <style lang='scss' scoped>
-    .m-home{
-        .home-content{ 
+    .m-movie{
+        .movie-content{ 
            h2{
                font-size: .7rem;
                padding: .4rem .5rem;

@@ -21,9 +21,6 @@ export default{
             
         }
     },
-    created(){
-        console.log(this.average)
-    },
     props: ['average', 'length'],
     methods: {
         imgSrc(n){
