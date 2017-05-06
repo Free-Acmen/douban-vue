@@ -1,5 +1,6 @@
 export default {
     LOADING_FLAG: 'LOADING_FLAG',  //加载状态
+    MOVIE_DATA: 'MOVIE_DATA',
     HOME_DATA: 'HOME_DATA',  // 获取初始数据
     CURRENT_MOVIE: 'CURRENT_MOVIE', // 当前浏览电影条目
     CURRENT_TAG: 'CURRENT_TAG', // 获取标签页数据
