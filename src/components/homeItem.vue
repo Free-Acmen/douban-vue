@@ -1,35 +1,34 @@
 <template>
     <div class='m-home-item'>
         <h5>{{homeItem.title}}</h5>
+        <img v-lazy="reviews.images.large" alt="电影海报">
         {{reviews.summary}}
     </div>
 </template>
 <script>
     import {mapState} from 'vuex' 
-    import store from '../store'
     import {currentMovie} from '../store/data'
     export default{
         data(){
             return {
+                reviews: '',
                 id: this.homeItem.id
             }
         },
-        props:['homeItem'],
+        props: ['homeItem'],
         computed: mapState({
             reviews(state){
                 return state.home.reviews
             }
         }),
         created(){
-            this.getReviews();
+            this.getReviews()
         },
         methods: {
             getReviews(){
-                if(Object.keys(store.state.home.reviews).length !== 0){
-                    return
-                }
                 currentMovie(this.id).then( (reviews)=>{
-                    store.commit('reviews', reviews)
+                    this.reviews = reviews
+                    console.log(reviews)
                 }).catch((err) => {
                     console.log(err)
                 })
