@@ -62,6 +62,7 @@
             font-size: .7rem;
             padding-bottom: .4rem;
             border-bottom:1px solid #ccc;
+            min-height: 11rem;
             img{
                 float:right;
                 width: 7.5rem;

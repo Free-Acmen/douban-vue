@@ -34,7 +34,7 @@ export const loadMore = (elem, callback) => {
     }, {passive: true})
 
     elem.addEventListener('touchmove', () => {
-        loadMore()
+        // loadMore()
     }, {passive: true})
 
     elem.addEventListener('touchend', () => {

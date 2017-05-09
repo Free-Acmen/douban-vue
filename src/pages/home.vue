@@ -2,7 +2,7 @@
     <div class='m-home'>
         <m-head></m-head>
         <div class='home-content padding-top' ref='loading'>
-            <m-home-item v-for='item in homeData.slice(0, 3)' :homeItem='item' :key='item.id'></m-home-item>
+            <m-home-item v-for='item in homeData.slice(0, num)' :homeItem='item' :key='item.id'></m-home-item>
             <div class='loading'>loading...</div>
         </div>
     </div>
@@ -16,7 +16,8 @@
     export default{
         data(){
             return {
-                title: '首页'
+                title: '首页',
+                num: 3
             }
         },
         created(){
@@ -24,6 +25,7 @@
         },
         mounted(){
             loadMore(this.$refs.loading, () => {
+                this.num += 3 
                 console.log(222)
             })
             console.log(this.$refs.loading)
@@ -35,7 +37,7 @@
             }
         }),
         methods: {
-        
+            
         }
     }
 </script>
