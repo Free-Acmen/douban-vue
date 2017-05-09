@@ -7,7 +7,7 @@ export const getStyle = function(elem, attr, numMode = 'init'){
     }else if(elem.currentStyle){
         target = elem.currentStyle[attr]
     }else{
-        target = doucument.defaultView.getComputedStyle(elem, null)[attr]
+        target = document.defaultView.getComputedStyle(elem, null)[attr]
     }
     return numMode == 'float' ? parseFloat(target) : parseInt(target)
 }
@@ -35,7 +35,6 @@ export const loadMore = (elem, callback) => {
 
     elem.addEventListener('touchmove', () => {
         loadMore()
-        console.log('moving')
     }, {passive: true})
 
     elem.addEventListener('touchend', () => {

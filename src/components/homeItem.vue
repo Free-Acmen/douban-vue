@@ -2,13 +2,12 @@
     <div class='m-home-item'>
         <h5 class='title'>
             {{homeItem.title}}
-            <span class='right'>{{reviews.year}}年上映</span>
+            <span class='right'>{{year}}年上映</span>
         </h5>
         <div class='content'>
             <img v-lazy="imageSrc" alt="电影海报">
-            {{reviews.summary}}
+            {{summary}}
         </div>
-        
     </div>
 </template>
 <script>
@@ -18,6 +17,8 @@
         data(){
             return {
                 reviews: '',
+                summary: '',
+                year: '',
                 id: this.homeItem.id
             }
         },
@@ -30,13 +31,15 @@
                 return (this.reviews && this.reviews.images.large)
             }
         }),
-        beforeCreate(){
+        created(){
             this.getReviews()
         },
         methods: {
             getReviews(){
                 currentMovie(this.id).then( (reviews)=>{
                     this.reviews = reviews
+                    this.summary = reviews.summary
+                    this.year = reviews.year
                     console.log(reviews)
                 }).catch((err) => {
                     console.log(err)

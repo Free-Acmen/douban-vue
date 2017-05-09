@@ -22,9 +22,9 @@
         created(){
             
         },
-        mouted(){
+        mounted(){
             loadMore(this.$refs.loading, () => {
-                console.log(111)
+                console.log(222)
             })
             console.log(this.$refs.loading)
         },
