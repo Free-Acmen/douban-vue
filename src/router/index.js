@@ -10,11 +10,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/home',  
     },
     home,
     movie
   ],
-  mode: 'hash',
+  mode: 'history',
   activeClass: 'active'
 })

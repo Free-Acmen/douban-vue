@@ -24,7 +24,7 @@ export const loadMore = (elem, callback) => {
 
     document.body.addEventListener('scroll', () => {
         loadMore()
-    },{passive: false})
+    })
 
     elem.addEventListener('touchstart', () =>　{
         height = elem.offsetHeight

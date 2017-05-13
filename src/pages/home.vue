@@ -2,52 +2,74 @@
     <div class='m-home'>
         <m-head></m-head>
         <div class='home-content padding-top' ref='loading'>
-            <m-home-item v-for='item in homeData.slice(0, num)' :homeItem='item' :key='item.id'></m-home-item>
-            <div class='loading'>loading...</div>
+            <m-home-item v-for='item in currentData' :homeItem='item' :key='item.id'></m-home-item>
         </div>
+        <m-loading v-show='loadingState' type='spiningDubbles' color='#11B91E'></m-loading>
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
     import {loadMore} from '../config/utils'
     import mHead from '../components/head'
     import mHomeItem from '../components/homeItem'
+    import mLoading from '../components/mLoading/mLoading'
+
     export default{
         data(){
             return {
                 title: '首页',
-                num: 3
+                currentData: [],
+                isLoading : true,
+                loadingState: true
             }
         },
         created(){
-            
+            this.setCurrentData()
+            console.log(this.currentData)
         },
         mounted(){
             loadMore(this.$refs.loading, () => {
-                this.num += 3 
-                console.log(222)
+                this.handLoad()
             })
-            console.log(this.$refs.loading)
         },
-        components: {mHead, mHomeItem},
-        computed: mapState({
-            homeData(state){
-                return state.home.homeData.subjects
+        watch: {
+            homeData(){
+                this.setCurrentData()
+                this.isLoading = true
             }
-        }),
+        },
+        computed:{
+            ...mapState({
+                homeData(state){
+                    return state.home.homeData
+                }
+            })
+        }, 
         methods: {
-            
-        }
+            ...mapActions(['getMoreData']),
+            handLoad(){
+                const { start, count, total } = this.homeData
+                if(!this.isLoading){
+                    return
+                }
+                if((start+count) < total){
+                    this.getMoreData({count, start:start+count})
+                    this.isLoading = false
+                }else{
+                    this.loadingState = false
+                }
+            },
+            setCurrentData(){
+                this.currentData = this.currentData.concat(this.homeData.subjects)
+            }
+        },
+        components: {mHead, mHomeItem, mLoading}
     }
 </script>
 
 <style lang='scss' scoped>
     .m-home{
-         .loading{
-             text-align: center;
-             color: #2384E8;
-             line-height: 2.6rem;
-         } 
+         
     }
 </style>

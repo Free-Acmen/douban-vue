@@ -13,7 +13,7 @@ export default {
             return
         }
         store.commit(type.LOADING_FLAG, true)
-        hotMovie(30, 0).then(function(homeData){
+        hotMovie(3, 0).then(function(homeData){
             store.commit(type.HOME_DATA, homeData)
             store.commit(type.LOADING_FLAG, false)
             store.commit(type.NET_STATUS, '')

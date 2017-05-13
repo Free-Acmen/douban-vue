@@ -8,7 +8,7 @@ export const ajax = url => new Promise((resolve, reject) => {
     xhr.send(null)
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
+            if (xhr.status === 200) {    
                 resolve(JSON.parse(xhr.responseText))
             } else {
                 reject(`错误: ${xhr.status}`)
@@ -16,7 +16,6 @@ export const ajax = url => new Promise((resolve, reject) => {
         }
     }
 })
-
 
 //影院热映
 export const hotMovie = (count, start) => {
