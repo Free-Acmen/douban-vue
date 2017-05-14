@@ -1,7 +1,7 @@
 import Movie from '../../pages/movie'
 import store from '../../store'
 import type from '../../store/mutation-type'
-import {hotMovie, commingSoon, top250, usBox} from '../../store/data'
+import {hotMovie, commingSoon, top250, usBox, weekly, newMovies} from '../../store/data'
 
 export default {
     path:'/movie',
@@ -17,7 +17,9 @@ export default {
             hotMovie(9, 0), 
             commingSoon(9, 0),
             top250(9, 0),
-            usBox(9, 0)
+            usBox(9, 0),
+            newMovies(9, 0),
+            weekly(9, 0)
         ]).then(function(movieData){
             store.commit(type.MOVIE_DATA, movieData)
             store.commit(type.LOADING_FLAG, false)

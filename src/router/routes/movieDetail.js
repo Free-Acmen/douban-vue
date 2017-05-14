@@ -7,11 +7,6 @@ export default {
     path: '/moviedetail/:movieId',
     component: MovieDetail,
     beforeEnter: function(to, from, next){
-        if(Object.keys(store.state.movieDetail.movieDetailData).length !== 0){
-           store.commit(type.LOADING_FLAG, false) 
-           next()
-           return 
-        }
         const movieId = to.params.movieId
         currentMovie(movieId).then((movieDetailData) => {
             store.commit(type.CURRENT_MOVIE, movieDetailData)
