@@ -1,5 +1,5 @@
 <template>
-    <router-link to='/'>
+    <router-link :to='`/moviedetail/${detail.id}`'>
         <dl class='movie-item left'>
             <dt class='movie-img'>
                 <img v-lazy="detail.images.large" :alt="detail.title">
@@ -28,7 +28,6 @@ export default{
     },
     computed:{
         average(){
-            // console.log(this.detail.rating.average)
             return this.detail.rating.average
         }
     }

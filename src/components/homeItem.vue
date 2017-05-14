@@ -1,5 +1,5 @@
 <template>
-    <div class='m-home-item'>
+    <router-link :to='`/moviedetail/${id}`' class='m-home-item'>
         <h5 class='title'>
             {{homeItem.title}}
             <span class='right'>{{year}}年上映</span>
@@ -8,9 +8,10 @@
             <img v-lazy="imageSrc" alt="电影海报">
             {{summary}}
         </div>
-        <m-loading v-else type='spiningDubbles' color='#11B91E'></m-loading>
-    </div>
+        <m-loading class='loading' v-else type='bubbles' color='#11B91E' width='2'></m-loading>
+    </router-link>
 </template>
+
 <script>
     import {mapState} from 'vuex' 
     import {currentMovie} from '../store/data'
@@ -54,6 +55,7 @@
 </script>
 <style lang='scss' scoped>
     .m-home-item{
+        display: block;
         padding: 0 .5rem;
         color: #000;
         .title{
@@ -68,7 +70,7 @@
             line-height: 1.1rem;
             font-size: .7rem;
             padding-bottom: .4rem;
-            border-bottom:1px solid #ccc;
+            border-bottom: 1px dotted #11B91E;
             min-height: 11rem;
             img{
                 float:right;
@@ -77,6 +79,10 @@
                 padding-top: .2rem;
                 padding-left: .1rem;
             }
+        }
+        .loading{
+            min-height: 8rem;
+            line-height: 8rem;
         }
     }
 </style>

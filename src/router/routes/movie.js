@@ -5,7 +5,7 @@ import {hotMovie, commingSoon, top250, usBox} from '../../store/data'
 
 export default {
     path:'/movie',
-    component:Movie,
+    component: Movie,
     beforeEnter:function(to, before, next){
         if(Object.keys(store.state.movie.movieData).length !== 0){
             store.commit(type.LOADING_FLAG, false)

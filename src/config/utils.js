@@ -22,7 +22,7 @@ export const loadMore = (elem, callback) => {
     let requestFram
     let oldScrollTop
 
-    document.body.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
         loadMore()
     })
 

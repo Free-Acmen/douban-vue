@@ -4,7 +4,8 @@
         <div class='home-content padding-top' ref='loading'>
             <m-home-item v-for='item in currentData' :homeItem='item' :key='item.id'></m-home-item>
         </div>
-        <m-loading v-show='loadingState' type='spiningDubbles' color='#11B91E'></m-loading>
+        <m-loading v-show='loadingState' type='spiningDubbles' color='#11B91E' width='1.5'></m-loading>
+        <m-foot></m-foot>
     </div>
 </template>
 
@@ -14,6 +15,7 @@
     import mHead from '../components/head'
     import mHomeItem from '../components/homeItem'
     import mLoading from '../components/mLoading/mLoading'
+    import mFoot from '../components/mFooter'
 
     export default{
         data(){
@@ -26,7 +28,6 @@
         },
         created(){
             this.setCurrentData()
-            console.log(this.currentData)
         },
         mounted(){
             loadMore(this.$refs.loading, () => {
@@ -64,7 +65,7 @@
                 this.currentData = this.currentData.concat(this.homeData.subjects)
             }
         },
-        components: {mHead, mHomeItem, mLoading}
+        components: {mHead, mHomeItem, mLoading, mFoot}
     }
 </script>
 

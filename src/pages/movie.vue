@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+        <m-foot></m-foot>
     </div>
 </template>
 
@@ -19,6 +20,7 @@
     import {mapState} from 'vuex'
     import mHead from '../components/head'
     import mItem from '../components/movieItem'
+    import mFoot from '../components/mFooter'
 
     export default{
         data(){
@@ -26,7 +28,7 @@
                 title: '首页'
             }
         },
-        components:{mHead, mItem},
+        components:{mHead, mItem, mFoot},
         computed: mapState({
             movieData(state){
                 return state.movie.movieData

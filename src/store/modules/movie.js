@@ -4,7 +4,7 @@ const state = {
     movieData: {}
 }
 
-const action = {}
+const actions = {}
 
 const getters = {}
 
@@ -16,7 +16,7 @@ const mutations = {
 
 export default {
     state,
-    action,
+    actions,
     getters,
     mutations
 }

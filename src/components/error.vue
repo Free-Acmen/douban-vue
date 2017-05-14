@@ -29,9 +29,10 @@ export default{
             text-align:center;
         }
         .link-home{
+            padding: .5rem;
             display: block;
             text-align: center;
-            font-size: .6rem;
+            font-size: .7rem;
         }
     }
 </style>
