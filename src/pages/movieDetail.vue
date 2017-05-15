@@ -44,8 +44,8 @@
 
 <script>
     import {mapState} from 'vuex' 
-    import store from '../store'
-    import type from '../store/mutation-type'
+    // import store from '../store'
+    // import type from '../store/mutation-type'
     import mHead from '../components/head'
     import mStar from '../components/star'
     import mFoot from '../components/mFooter'
@@ -56,7 +56,7 @@
             }
         },
         destroyed(){
-            store.commit(type.CURRENT_MOVIE, '')
+            // store.commit(type.CURRENT_MOVIE, '')
         },
         computed:{
             ...mapState({
