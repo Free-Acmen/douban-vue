@@ -47,7 +47,7 @@ export const currentMovie = currentMovieId => {
     return ajax(`/v2/movie/subject/${currentMovieId}?apikey=${apikey}`)
 }
 
- // 当前电影短评信息
+ // 当前电影短评信息(comments)
 export const reviews = (movieId, count, start) => ajax(`${server}/v2/movie/subject/${movieId}/reviews?apikey=${apikey}&count=${count}&start=${start}`)
 
 //当前标签详情

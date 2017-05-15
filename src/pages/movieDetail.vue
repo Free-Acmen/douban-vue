@@ -36,6 +36,9 @@
                         </dl>
                     </router-link>
                 </div>
+            </div>
+            <div class='reviews'>
+                <h6>{{movieDetailData.title}}的评论({{movieDetailData.comments_count}}条)</h6>
             </div> 
         </section>
         <m-foot></m-foot>
@@ -43,25 +46,35 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex' 
+    import {mapState, mapActions} from 'vuex' 
     // import store from '../store'
     // import type from '../store/mutation-type'
     import mHead from '../components/head'
     import mStar from '../components/star'
     import mFoot from '../components/mFooter'
+    // import {reviews} from '../store/data'
 
     export default{
         data(){
             return {
+                currentReviews: {}
             }
         },
         destroyed(){
             // store.commit(type.CURRENT_MOVIE, '')
         },
+        watch: {
+            reviewsData(){
+                console.log(this.reviewsData)
+            }
+        },
         computed:{
             ...mapState({
                 movieDetailData(state){
                     return state.movieDetail.movieDetailData
+                },
+                reviewsData(state){
+                    return state.movieDetail.reviewsData
                 }
             }),
             average(){
@@ -102,8 +115,9 @@
             }
         },
         methods: {
-            isDataHas(){
-                
+            ...mapActions(['getReviews']),
+            reviewsAdd(){
+                getReviews({movieId:26387939, count:5, start:6})
             }
         },
         components:{mHead, mStar, mFoot}
