@@ -11,7 +11,7 @@
                     </div>
                     <p>{{infos}}</p>	    
                 </div>
-                <img v-lazy="movieDetailData.images.medium" alt="电影海报">
+                <img v-lazy="imgSrc" alt="电影海报">
             </div>
             <div class='plot'>
                 <h6>{{movieDetailData.title}}的剧情简介</h6>
@@ -44,6 +44,8 @@
 
 <script>
     import {mapState} from 'vuex' 
+    import store from '../store'
+    import type from '../store/mutation-type'
     import mHead from '../components/head'
     import mStar from '../components/star'
     import mFoot from '../components/mFooter'
@@ -51,11 +53,10 @@
     export default{
         data(){
             return {
-
             }
         },
-        created(){
-            console.log(this.movieDetailData)
+        destroyed(){
+            store.commit(type.CURRENT_MOVIE, '')
         },
         computed:{
             ...mapState({
@@ -64,9 +65,21 @@
                 }
             }),
             average(){
+                if(Object.keys(this.movieDetailData).length === 0){
+                    return
+                }
                 return this.movieDetailData.rating.average
             },
+            imgSrc(){
+                if(Object.keys(this.movieDetailData).length === 0){
+                    return
+                }
+                return this.movieDetailData.images.medium
+            },
             infos() {
+                if(Object.keys(this.movieDetailData).length === 0){
+                    return
+                }
                 const { directors, countries, year, genres, casts } = this.movieDetailData
                 let array = [];
                 Array.prototype.push.call(array, genres.reduce((previous, current) => `${previous} / ${current}`),
@@ -75,6 +88,9 @@
                 return array.join(' / ')
             },
             celebrityItems() {
+                if(Object.keys(this.movieDetailData).length === 0){
+                    return
+                }
                 const { directors, casts } = this.movieDetailData
                 directors.forEach((value) => {
                     value.isDirector = true
@@ -83,6 +99,11 @@
                     value.isDirector = false
                 })
                 return Array.prototype.concat.call(directors, casts)
+            }
+        },
+        methods: {
+            isDataHas(){
+                
             }
         },
         components:{mHead, mStar, mFoot}
@@ -101,7 +122,7 @@
             }
             .info-content{
                 float: left;
-                width: 70%;
+                width: 66%;
                 min-height: 6rem;
                 .info-average{
                     padding-bottom: .3rem;
@@ -115,14 +136,11 @@
                         color: #C4C4C4;
                     }
                 }
-                img{
-                    float: right;
-                }
                 p{
                     line-height: 1rem;
-                    padding-right: .3rem;
                 }
             }
+            .movie-info img{ float: right; }
             h6{
                 padding: .5rem 0;
                 font-size: .7rem;
