@@ -37,7 +37,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class='reviews' v-if='reviewsData'>
+            <div class='reviews'>
                 <h6>{{movieDetailData.title}}的评论({{movieDetailData.comments_count}}条)</h6>
                 <m-reviews v-for='item in reviewsData.comments' :reviewItem='item' :key = 'item.id'></m-reviews>
                 <div class='page'>
@@ -67,15 +67,20 @@
         },
         created(){
             const {start, count} = this.reviewsData
-            if(start > count){
+            if(start >= count){
                 this.isPrev = true
-                console.log(11)
             }
-            console.log(this.isPrev)
         },
         watch: {
             reviewsData(){
                 this.isGetReview = true
+                const {start, count, total} = this.reviewsData
+                if(start - count < 0){
+                    this.isPrev = false
+                }
+                if(start + count > total){
+                    this.isNext = false
+                }
             }
         },
         computed:{
@@ -144,9 +149,9 @@
                     return
                 }
                 this.isGetReview = false
-                const {start, next_start, count} = this.reviewsData
+                const {start, count} = this.reviewsData
                 if(start >= count){
-                    this.getReviews({movieId:this.movieDetailData.id, count:count, start:next_start-2*count-1})
+                    this.getReviews({movieId:this.movieDetailData.id, count:count, start:start-count})
                     this.isNext = true
                 }else{
                     this.isPrev = false
@@ -244,6 +249,7 @@
                     text-align: center;
                     span{
                         padding: .3rem .8rem;
+                        cursor: pointer;
                     }
                     span.able{
                         color: #2384e8;
