@@ -37,8 +37,13 @@
                     </router-link>
                 </div>
             </div>
-            <div class='reviews'>
+            <div class='reviews' v-if='reviewsData'>
                 <h6>{{movieDetailData.title}}的评论({{movieDetailData.comments_count}}条)</h6>
+                <m-reviews v-for='item in reviewsData.comments' :reviewItem='item' :key = 'item.id'></m-reviews>
+                <div class='page'>
+                    <span :class='{able : isPrev}' @click = 'reviewsLess'>上一页</span>
+                    <span :class='{able : isNext}' @click ='reviewsAdd'>下一页</span>
+                </div>
             </div> 
         </section>
         <m-foot></m-foot>
@@ -47,25 +52,30 @@
 
 <script>
     import {mapState, mapActions} from 'vuex' 
-    // import store from '../store'
-    // import type from '../store/mutation-type'
     import mHead from '../components/head'
     import mStar from '../components/star'
+    import mReviews from '../components/reviews'
     import mFoot from '../components/mFooter'
-    // import {reviews} from '../store/data'
 
     export default{
         data(){
             return {
-                currentReviews: {}
+                isNext: true,
+                isPrev: false,
+                isGetReview: true
             }
         },
-        destroyed(){
-            // store.commit(type.CURRENT_MOVIE, '')
+        created(){
+            const {start, count} = this.reviewsData
+            if(start > count){
+                this.isPrev = true
+                console.log(11)
+            }
+            console.log(this.isPrev)
         },
         watch: {
             reviewsData(){
-                console.log(this.reviewsData)
+                this.isGetReview = true
             }
         },
         computed:{
@@ -117,10 +127,33 @@
         methods: {
             ...mapActions(['getReviews']),
             reviewsAdd(){
-                getReviews({movieId:26387939, count:5, start:6})
+                if(!this.isGetReview){
+                    return
+                }
+                this.isGetReview = false
+                const {start, next_start, count, total} = this.reviewsData 
+                if(next_start < total){
+                    this.getReviews({movieId:this.movieDetailData.id, count:count, start:next_start})
+                    this.isPrev = true
+                }else{
+                    this.isNext = false
+                }  
+            },
+            reviewsLess(){
+                if(!this.isGetReview){
+                    return
+                }
+                this.isGetReview = false
+                const {start, next_start, count} = this.reviewsData
+                if(start >= count){
+                    this.getReviews({movieId:this.movieDetailData.id, count:count, start:next_start-2*count-1})
+                    this.isNext = true
+                }else{
+                    this.isPrev = false
+                }
             }
         },
-        components:{mHead, mStar, mFoot}
+        components:{mHead, mStar, mReviews, mFoot}
     }
 </script>
 
@@ -203,6 +236,17 @@
                                 }
                             } 
                         }
+                    }
+                }
+            }
+            .reviews{
+                .page{
+                    text-align: center;
+                    span{
+                        padding: .3rem .8rem;
+                    }
+                    span.able{
+                        color: #2384e8;
                     }
                 }
             }

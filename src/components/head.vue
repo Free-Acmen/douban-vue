@@ -34,6 +34,7 @@ export default{
         padding: 0 .5rem; 
         background-color: #fff;
         border-bottom: 1px solid #ccc;
+        z-index: 100;
         .title{
             color: #11B91E;
             font-size: 1.2rem;
