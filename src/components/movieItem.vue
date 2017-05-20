@@ -37,7 +37,7 @@ export default{
 <style lang='scss' scoped>
     .movie-item{
         width: 5.2rem;
-        padding: 0 .25rem;
+        padding: .3rem .25rem;
         .movie-img{
             height: 6.8rem;
             img{

@@ -5,7 +5,7 @@
             <div class='movie-content clear ' v-for='item in movieData' :key='item.title'>
                 <h2>
                     <span class='title'>{{item.title}}</span>
-                    <router-link class='more right' to='/'>更多</router-link>
+                    <router-link class='more right' :to='`/more/${item.title}`'>更多</router-link>
                 </h2>
                 <div class='swiper'>
                     <m-item class="item" v-for='movieDetail in item.subjects.slice(0, 9)' :movieDetail='movieDetail' :key='movieDetail.id'></m-item> 
