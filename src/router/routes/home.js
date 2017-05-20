@@ -7,11 +7,6 @@ export default {
     path: '/home',
     component: Home,
     beforeEnter: function(to, before, next) {
-        // if(Object.keys(store.state.home.homeData).length !== 0){
-        //     store.commit(type.LOADING_FLAG, false)
-        //     next()
-        //     return
-        // }
         store.commit(type.LOADING_FLAG, true)
         hotMovie(3, 0).then(function(homeData) {
             store.commit(type.HOME_DATA, homeData)

@@ -39,7 +39,10 @@
             </div>
             <div class='reviews'>
                 <h6>{{movieDetailData.title}}的评论({{movieDetailData.comments_count}}条)</h6>
-                <m-reviews v-for='item in reviewsData.comments' :reviewItem='item' :key = 'item.id'></m-reviews>
+                <div v-if='!reviewsLoading'>
+                    <m-reviews v-for='item in reviewsData.comments' :reviewItem='item' :key = 'item.id'></m-reviews>
+                </div>
+                <m-loading v-else type='beat' color='#11B91E' width='1.5'></m-loading>
                 <div class='page'>
                     <span :class='{able : isPrev}' @click = 'reviewsLess'>上一页</span>
                     <span :class='{able : isNext}' @click ='reviewsAdd'>下一页</span>
@@ -56,13 +59,15 @@
     import mStar from '../components/star'
     import mReviews from '../components/reviews'
     import mFoot from '../components/mFooter'
+    import mLoading from '../components/mLoading/mLoading'
 
     export default{
         data(){
             return {
                 isNext: true,
                 isPrev: false,
-                isGetReview: true
+                isGetReview: true,
+                reviewsLoading: false
             }
         },
         created(){
@@ -74,11 +79,12 @@
         watch: {
             reviewsData(){
                 this.isGetReview = true
-                const {start, count, total} = this.reviewsData
+                this.reviewsLoading = false
+                const {start, next_start, count, total} = this.reviewsData
                 if(start - count < 0){
                     this.isPrev = false
                 }
-                if(start + count > total){
+                if(next_start + count > total){
                     this.isNext = false
                 }
             }
@@ -135,6 +141,7 @@
                 if(!this.isGetReview){
                     return
                 }
+                this.reviewsLoading = true
                 this.isGetReview = false
                 const {start, next_start, count, total} = this.reviewsData 
                 if(next_start < total){
@@ -148,6 +155,7 @@
                 if(!this.isGetReview){
                     return
                 }
+                this.reviewsLoading = true
                 this.isGetReview = false
                 const {start, count} = this.reviewsData
                 if(start >= count){
@@ -158,7 +166,7 @@
                 }
             }
         },
-        components:{mHead, mStar, mReviews, mFoot}
+        components:{mHead, mStar, mReviews, mFoot, mLoading}
     }
 </script>
 
