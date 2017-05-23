@@ -27,7 +27,7 @@
                 <h6>影人</h6>
                 <div class='content'>
                     <router-link to='/' v-for="item in celebrityItems" :key="item.id">
-                        <dl class="celebrityItem">
+                        <dl class="celebrityItem" v-if='item.avatars'>
                             <dt><img v-lazy="item.avatars.large" alt="导演照片"></dt>
                             <dd>
                                 <h3 class="ellipsis">{{ item.name }}</h3>
@@ -71,9 +71,12 @@
             }
         },
         created(){
-            const {start, count} = this.reviewsData
+            const {start, next_start, count, total} = this.reviewsData
             if(start >= count){
                 this.isPrev = true
+            }
+            if(next_start >= total){
+                    this.isNext = false
             }
         },
         watch: {
@@ -84,7 +87,7 @@
                 if(start - count < 0){
                     this.isPrev = false
                 }
-                if(next_start + count > total){
+                if(next_start >= total){
                     this.isNext = false
                 }
             }
@@ -141,10 +144,10 @@
                 if(!this.isGetReview){
                     return
                 }
-                this.reviewsLoading = true
                 this.isGetReview = false
                 const {start, next_start, count, total} = this.reviewsData 
                 if(next_start < total){
+                     this.reviewsLoading = true
                     this.getReviews({movieId:this.movieDetailData.id, count:count, start:next_start})
                     this.isPrev = true
                 }else{
@@ -155,10 +158,10 @@
                 if(!this.isGetReview){
                     return
                 }
-                this.reviewsLoading = true
                 this.isGetReview = false
                 const {start, count} = this.reviewsData
                 if(start >= count){
+                    this.reviewsLoading = true
                     this.getReviews({movieId:this.movieDetailData.id, count:count, start:start-count})
                     this.isNext = true
                 }else{

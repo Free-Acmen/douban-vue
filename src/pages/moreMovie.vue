@@ -26,7 +26,6 @@
             }
         },
         created(){
-            console.log(this.moreData)
             this.setCurrentData()
         },
         mounted(){
