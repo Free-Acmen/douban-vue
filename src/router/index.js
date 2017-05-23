@@ -4,6 +4,7 @@ import home from './routes/home'
 import movie from './routes/movie'
 import movieDetail from './routes/movieDetail'
 import moreMovie from './routes/more'
+import search from './routes/search'
 
 Vue.use(Router)
 
@@ -13,7 +14,8 @@ export default new Router({
         home,
         movie,
         movieDetail,
-        moreMovie
+        moreMovie,
+        search
     ],
     scrollBehavior(to, from, savedPosition) {
         // return 期望新页面滚动到的位置

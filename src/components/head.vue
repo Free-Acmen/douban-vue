@@ -6,7 +6,7 @@
             <router-link class='book' to='/'>图书</router-link>
             <router-link class='broadcast' to='/'>广播</router-link>
             <router-link class='group' to='/'>小组</router-link>
-            <router-link class='search' to='/'>
+            <router-link class='search' to='/search'>
                 <img src='../assets/image/search.png' alt='搜索'>
             </router-link>
         </div>
