@@ -6,10 +6,10 @@
         </header>
         <div class='search-container'>
             <ul class='clear'>
-                <li v-for='item in searchTags' :key='item.tag'><router-link :to='`/tag/${item.tag}`' :style='`color:${item.color};font-size: ${item.size};`'>{{item.tag}}</router-link></li>
+                <li v-for='item in searchTags' :key='item.tag'><router-link :to='`/tag/${item.tag}`' :style='`color:${item.color};font-size: ${random(7, 12)/10}rem;`'>{{item.tag}}</router-link></li>
             </ul>
         </div>
-        <router-link class='search-close' to='/'>关闭搜索页</router-link>
+        <router-link class='search-close' to='/movie'>关闭搜索页</router-link>
         <m-foot></m-foot>
     </div>
 </template>
@@ -21,29 +21,26 @@ import mFoot from '../components/mFooter'
             return {
                 searchText: '',
                 searchTags: [
-                    { tag: '经典', color: 'rgb(35, 132, 232)', size: '.8rem' },
-                    { tag: '冷门佳片', color: 'rgb(122, 106, 219)', size: '1.2rem' },
-                    { tag: '豆瓣高分', color: 'rgb(159, 120, 96)', size: '.9rem' },
-                    { tag: '动作', color: 'rgb(230, 70, 126)', size: '1.2rem' },
-                    { tag: '喜剧', color: 'rgb(42, 184, 204)', size: '.7rem' },
-                    { tag: '爱情', color: 'rgb(244, 143, 46)', size: '.9rem' },
-                    { tag: '悬疑', color: 'rgb(159, 120, 96)', size: '.8rem' },
-                    { tag: '恐怖', color: 'rgb(87, 116, 197)', size: '1.1rem' },
-                    { tag: '科幻', color: 'rgb(89, 108, 221)', size: '1rem' },
-                    { tag: '治愈', color: 'rgb(225, 100, 77)', size: '1.3rem' },
-                    { tag: '文艺', color: 'rgb(64, 207, 169)', size: '.6rem' },
-                    { tag: '歌剧', color: 'rgb(64, 207, 169)', size: '.9rem' },
-                    { tag: '成长', color: 'rgb(66, 189, 86)', size: '1.2rem' },
-                    { tag: '动画', color: 'rgb(230, 70, 126)', size: '.7rem' },
-                    { tag: '华语', color: 'rgb(225, 100, 77)', size: '1.4rem' },
-                    { tag: '欧美', color: 'rgb(87, 116, 197)', size: '.8rem' },
-                    { tag: '韩国', color: 'rgb(35, 132, 232)', size: '1.1rem' },
-                    { tag: '日本', color: 'rgb(159, 120, 96)', size: '.6rem' }
+                    { tag: '经典', color: 'rgb(35, 132, 232)' },
+                    { tag: '冷门佳片', color: 'rgb(122, 106, 219)' },
+                    { tag: '豆瓣高分', color: 'rgb(159, 120, 96)' },
+                    { tag: '动作', color: 'rgb(230, 70, 126)' },
+                    { tag: '喜剧', color: 'rgb(42, 184, 204)' },
+                    { tag: '爱情', color: 'rgb(244, 143, 46)' },
+                    { tag: '悬疑', color: 'rgb(159, 120, 96)' },
+                    { tag: '恐怖', color: 'rgb(87, 116, 197)' },
+                    { tag: '科幻', color: 'rgb(89, 108, 221)' },
+                    { tag: '治愈', color: 'rgb(225, 100, 77)' },
+                    { tag: '文艺', color: 'rgb(64, 207, 169)' },
+                    { tag: '歌剧', color: 'rgb(64, 207, 169)' },
+                    { tag: '成长', color: 'rgb(66, 189, 86)' },
+                    { tag: '动画', color: 'rgb(230, 70, 126)' },
+                    { tag: '华语', color: 'rgb(225, 100, 77)' },
+                    { tag: '欧美', color: 'rgb(87, 116, 197)' },
+                    { tag: '韩国', color: 'rgb(35, 132, 232)' },
+                    { tag: '日本', color: 'rgb(159, 120, 96)' }
                 ]
             }
-        },
-        computed: {
-
         },
         methods: {
             random(min, max){
@@ -78,7 +75,7 @@ import mFoot from '../components/mFooter'
         }
         .search-container{
             ul{
-                padding: 1rem 0;
+                padding: 1rem .5rem;
             }
             li{
                 float: left;
