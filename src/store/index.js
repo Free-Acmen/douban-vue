@@ -5,6 +5,7 @@ import home from './modules/home'
 import movie from './modules/movie'
 import movieDetail from './modules/movieDetail'
 import moreMovie from './modules/more'
+import tag from './modules/tag'
 
 Vue.use(Vuex)
 
@@ -26,7 +27,8 @@ const store = new Vuex.Store({
         home,
         movie,
         movieDetail,
-        moreMovie
+        moreMovie,
+        tag
     }
 })
 

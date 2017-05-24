@@ -19,7 +19,7 @@
             </div> 
             <div class='more'>
                 <h6>查看更多豆瓣高分电影电视剧</h6>
-                <router-link to='/' v-for="item in movieDetailData.genres" class="tagItem" :key="item">
+                <router-link :to='`/tag/${item}`' v-for="item in movieDetailData.genres" class="tagItem" :key="item">
                 {{ item }}
                 </router-link>
             </div>

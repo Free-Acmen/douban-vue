@@ -7,6 +7,7 @@ export default {
     component: Search,
     beforeEnter: function(to, before, next) {
         store.commit(type.LOADING_FLAG, false)
+        store.commit(type.NET_STATUS, "")
         next()
     }
 }

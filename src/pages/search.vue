@@ -2,7 +2,7 @@
     <div class='m-search'>
         <header>
             <span>搜索</span>
-            <input type="text" v-model='searchText' placeholder='搜索感兴趣的电影、影人'>
+            <input type="text" v-model='searchText' placeholder='搜索感兴趣的电影、影人' @blur='searchHandle'>
         </header>
         <div class='search-container'>
             <ul class='clear'>
@@ -45,6 +45,9 @@ import mFoot from '../components/mFooter'
         methods: {
             random(min, max){
                 return Math.floor(Math.random()*(max-min+1)+min)
+            },
+            searchHandle(){
+                this.$router.push({ path: `/tag/${this.searchText}`})
             }
         },
         components: {mFoot}
