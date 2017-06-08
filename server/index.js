@@ -8,7 +8,7 @@ server.set('port', process.env.PORT || 8088)
 server.use(bodyparser.json())
 server.use(bodyparser.urlencoded({ extended: false }))
 
-server.use('/static', express.static('static'))
+server.use(express.static(__dirname + '/public'))
 server.use('/v2', proxy({
     target: 'http://api.douban.com',
     changeOrigin: true,
@@ -16,11 +16,10 @@ server.use('/v2', proxy({
         Referer: 'http://api.douban.com'
     }
 }))
-
 api(server)
 
 server.get('/', function(req, res) {
-    res.sendfile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/index.html')
 })
 server.listen(server.get('port'))
 console.log('success listen at :' + server.get('port'))
