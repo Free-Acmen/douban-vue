@@ -1,0 +1,29 @@
+{
+    "restartable": "rs", //重启的命令，默认是 rs ，可以改成你自己喜欢的字符串。
+    "ignore": [ //忽略的文件后缀名或者文件夹，文件路径的书写用相对于 nodemon.json 所在位置的相对路径
+        ".git",
+        "node_modules/**/node_modules"
+    ],
+    "verbose": true, //表示输出详细启动与重启信息
+    "execMap": { //运行服务的后缀名和对应的运行命令
+        "": "node",
+        "js": "node --harmony"
+    },
+    "events": { //这个字段表示 nodemon 运行到某些状态时的一些触发事件,总共有五个状态 
+        //start - 子进程（即监控的应用）启动
+        //crash - 子进程崩溃，不会触发 exit
+        //exit - 子进程完全退出，不是非正常的崩溃
+        //restart - 子进程重启\config:update - nodemon 的 config 文件改变
+        "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+    },
+    "watch": [ //监控的文件夹路径或者文件路径。
+        "test/fixtures/",
+        "test/samples/"
+    ],
+    "env": { //运行环境 development 是开发环境，production 是生产环境。port 是端口号。
+        "NODE_ENV": "development",
+        "PORT": "3000"
+    },
+    "ext": "js json", //监控指定后缀名的文件，用空格间隔。
+    "legacy-watch": false //nodemon 使用  Chokidar 作为底层监控系统，但是如果监控失效，或者提示没有需要监控的文件时，就需要使用轮询模式（polling mode），即设置 legacy-watch 为 true
+}
